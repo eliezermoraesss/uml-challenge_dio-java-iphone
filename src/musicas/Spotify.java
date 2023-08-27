@@ -1,5 +1,6 @@
 package musicas;
 
+import exceptions.ResourceNotFoundException;
 import interfaces.ReprodutorMusical;
 import musicas.Musica;
 
@@ -33,7 +34,18 @@ public class Spotify implements ReprodutorMusical {
 
     @Override
     public String removerMusica(String nomeMusica) {
-        musicas.remove(nomeMusica);
+        Musica musicaParaRemover = null;
+        if (!musicas.isEmpty()) {
+            for (Musica musica : musicas) {
+                if(musica.getNomeMusica().equals(nomeMusica)){
+                    musicaParaRemover = musica;
+                    break;
+                }
+            }
+            musicas.remove(musicaParaRemover);
+        } else {
+            throw new ResourceNotFoundException("A lista de músicas está vazia");
+        }
         return nomeMusica + " removida com sucesso pelo SPOTIFY!";
     }
 
@@ -60,5 +72,26 @@ public class Spotify implements ReprodutorMusical {
     @Override
     public String selecionarMusica(String nomeMusica) {
         return "Selecionando música. " + tocar(nomeMusica);
+    }
+
+    @Override
+    public void exibirMusicas() {
+        if(!musicas.isEmpty()) {
+            System.out.println(musicas);
+        } else {
+            throw new ResourceNotFoundException("A lista de músicas do SPOTIFY está vazia");
+        }
+    }
+
+    @Override
+    public void exibirQuantidadeDeMusicas() {
+        System.out.println("Você tem " + musicas.size() + " em sua playlist do SPOTIFY");
+    }
+
+    @Override
+    public String toString() {
+        return "Spotify{" +
+                "musicas=" + musicas +
+                '}';
     }
 }

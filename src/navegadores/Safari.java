@@ -23,6 +23,7 @@ public class Safari implements NavegadorInternet {
 
     @Override
     public void atualizarPagina() {
+
         System.out.println("Atualizando página pelo navegador Safari");
     }
 }

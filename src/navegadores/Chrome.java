@@ -11,16 +11,19 @@ public class Chrome implements NavegadorInternet {
 
     @Override
     public void exibirPágina() {
+
         System.out.println("Exibindo página pelo navegador Chrome");
     }
 
     @Override
     public void adicionarNovaAba() {
+
         System.out.println("Adicionando nova página pelo navegador Chrome");
     }
 
     @Override
     public void atualizarPagina() {
+
         System.out.println("Atualizando página pelo navegador Chrome");
     }
 }

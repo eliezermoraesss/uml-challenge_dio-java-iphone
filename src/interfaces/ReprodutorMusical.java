@@ -6,4 +6,6 @@ public interface ReprodutorMusical {
     String selecionarMusica(String nomeMusica);
     String adicionarMusica(String nomeMusica);
     String removerMusica(String nomeMusica);
+    void exibirMusicas();
+    void exibirQuantidadeDeMusicas();
 }
