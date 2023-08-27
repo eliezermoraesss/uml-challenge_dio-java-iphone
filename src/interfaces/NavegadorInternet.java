@@ -1,7 +1,11 @@
 package interfaces;
 
 public interface NavegadorInternet {
-    void exibirPágina();
+    String adicionarFavorito(String url);
+    String removerFavorito(String url);
+    void exibirFavoritos();
+    void exibirQuantidadeFavoritos();
+    void exibirPágina(String url);
     void adicionarNovaAba();
-    void atualizarPagina();
+    void atualizarPagina(String url);
 }

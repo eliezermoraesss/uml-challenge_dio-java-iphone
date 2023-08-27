@@ -1,5 +1,6 @@
 package navegadores;
 
+import exceptions.ResourceNotFoundException;
 import interfaces.NavegadorInternet;
 
 import java.util.HashSet;
@@ -10,20 +11,61 @@ public class Chrome implements NavegadorInternet {
     private Set<Favorito> favoritos = new HashSet<>();
 
     @Override
-    public void exibirPágina() {
+    public String adicionarFavorito(String url) {
+        favoritos.add(new Favorito(url));
+        return url + " adicionada com sucesso no CHROME!";
+    }
 
-        System.out.println("Exibindo página pelo navegador Chrome");
+    @Override
+    public String removerFavorito(String url) {
+        Favorito urlParaRemover = null;
+        if (!favoritos.isEmpty()) {
+            for (Favorito favorito : favoritos) {
+                if(favorito.getUrl().equals(url)){
+                    urlParaRemover = favorito;
+                    break;
+                }
+            }
+            favoritos.remove(urlParaRemover);
+        } else {
+            throw new ResourceNotFoundException("A lista de favoritos está vazia");
+        }
+        return url + " removida com sucesso pelo CHROME!";
+    }
+
+    @Override
+    public void exibirFavoritos() {
+        if(!favoritos.isEmpty()) {
+            System.out.println(favoritos);
+        } else {
+            throw new ResourceNotFoundException("A lista de Favoritos do CHROME está vazia");
+        }
+    }
+
+    @Override
+    public void exibirQuantidadeFavoritos() {
+        System.out.println("A lista de Favoritos do CHROME contem " + favoritos.size() + " urls");
+    }
+
+    @Override
+    public void exibirPágina(String url) {
+        System.out.println("Exibindo página " + url + " pelo navegador CHROME");
     }
 
     @Override
     public void adicionarNovaAba() {
-
-        System.out.println("Adicionando nova página pelo navegador Chrome");
+        System.out.println("Adicionando nova página pelo navegador CHROME");
     }
 
     @Override
-    public void atualizarPagina() {
+    public void atualizarPagina(String url) {
+        System.out.println("Atualizando página " + url + " pelo navegador CHROME");
+    }
 
-        System.out.println("Atualizando página pelo navegador Chrome");
+    @Override
+    public String toString() {
+        return "Chrome{" +
+                "favoritos=" + favoritos +
+                '}';
     }
 }
