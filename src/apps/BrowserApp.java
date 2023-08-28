@@ -25,6 +25,7 @@ public class BrowserApp {
         System.out.println();
 
         chrome.exibirFavoritos();
+        chrome.exibirQuantidadeFavoritos();
         chrome.removerFavorito(url4);
         chrome.removerFavorito(url3);
         chrome.exibirFavoritos();
@@ -37,13 +38,14 @@ public class BrowserApp {
         System.out.println();
 
         System.out.println("Selecionando o navegador SAFARI\n");
-        safari.adicionarFavorito(url4);
-        safari.adicionarFavorito(url5);
-        safari.adicionarFavorito(url6);
-        safari.adicionarFavorito(url7);
+        System.out.println(safari.adicionarFavorito(url4));
+        System.out.println(safari.adicionarFavorito(url5));
+        System.out.println(safari.adicionarFavorito(url6));
+        System.out.println(safari.adicionarFavorito(url7));
         System.out.println();
 
         safari.exibirFavoritos();
+        chrome.exibirQuantidadeFavoritos();
         safari.removerFavorito(url1);
         safari.removerFavorito(url5);
         safari.exibirFavoritos();
