@@ -26,14 +26,14 @@ public class BrowserApp {
 
         chrome.exibirFavoritos();
         chrome.exibirQuantidadeFavoritos();
-        chrome.removerFavorito(url4);
-        chrome.removerFavorito(url3);
+        System.out.println(chrome.removerFavorito(url4));
+        System.out.println(chrome.removerFavorito(url3));
         chrome.exibirFavoritos();
         chrome.exibirQuantidadeFavoritos();
         System.out.println();
 
         chrome.adicionarNovaAba();
-        chrome.exibirPágina(url4);
+        chrome.exibirPagina(url4);
         chrome.atualizarPagina(url4);
         System.out.println();
 
@@ -45,15 +45,15 @@ public class BrowserApp {
         System.out.println();
 
         safari.exibirFavoritos();
-        chrome.exibirQuantidadeFavoritos();
-        safari.removerFavorito(url1);
-        safari.removerFavorito(url5);
+        safari.exibirQuantidadeFavoritos();
+        System.out.println(safari.removerFavorito(url1));
+        System.out.println(safari.removerFavorito(url5));
         safari.exibirFavoritos();
         safari.exibirQuantidadeFavoritos();
         System.out.println();
 
         safari.adicionarNovaAba();
-        safari.exibirPágina(url7);
+        safari.exibirPagina(url7);
         safari.atualizarPagina(url7);
         System.out.println();
     }

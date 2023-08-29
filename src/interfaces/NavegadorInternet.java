@@ -5,7 +5,7 @@ public interface NavegadorInternet {
     String removerFavorito(String url);
     void exibirFavoritos();
     void exibirQuantidadeFavoritos();
-    void exibirPágina(String url);
+    void exibirPagina(String url);
     void adicionarNovaAba();
     void atualizarPagina(String url);
 }

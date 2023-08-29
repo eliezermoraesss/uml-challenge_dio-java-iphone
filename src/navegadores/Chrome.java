@@ -23,14 +23,14 @@ public class Chrome implements NavegadorInternet {
             for (Favorito favorito : favoritos) {
                 if(favorito.getUrl().equals(url)){
                     urlParaRemover = favorito;
-                    break;
+                    favoritos.remove(urlParaRemover);
+                    return url + " removida com sucesso pelo CHROME!";
                 }
             }
-            favoritos.remove(urlParaRemover);
         } else {
             throw new ResourceNotFoundException("A lista de favoritos está vazia");
         }
-        return url + " removida com sucesso pelo CHROME!";
+        return url + " não encontrada pelo CHROME!";
     }
 
     @Override
@@ -48,7 +48,7 @@ public class Chrome implements NavegadorInternet {
     }
 
     @Override
-    public void exibirPágina(String url) {
+    public void exibirPagina(String url) {
         System.out.println("Exibindo página " + url + " pelo navegador CHROME");
     }
 
