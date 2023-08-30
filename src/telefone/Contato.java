@@ -3,14 +3,16 @@ package telefone;
 public class Contato {
 
     private String nome;
-    private Integer numero;
+    private Long numero;
+    private boolean bloqueado;
 
     public Contato() {
     }
 
-    public Contato(String nome, Integer numero) {
+    public Contato(String nome, Long numero, boolean bloqueado) {
         this.nome = nome;
         this.numero = numero;
+        this.bloqueado = bloqueado;
     }
 
     public String getNome() {
@@ -21,12 +23,20 @@ public class Contato {
         this.nome = nome;
     }
 
-    public Integer getNumero() {
+    public Long getNumero() {
         return numero;
     }
 
-    public void setNumero(Integer numero) {
+    public void setNumero(Long numero) {
         this.numero = numero;
+    }
+
+    public boolean isBloqueado() {
+        return bloqueado;
+    }
+
+    public void setBloqueado(boolean bloqueado) {
+        this.bloqueado = bloqueado;
     }
 
     @Override
@@ -34,6 +44,7 @@ public class Contato {
         return "Contato{" +
                 "nome='" + nome + '\'' +
                 ", numero=" + numero +
+                ", bloqueado=" + bloqueado +
                 '}';
     }
 }

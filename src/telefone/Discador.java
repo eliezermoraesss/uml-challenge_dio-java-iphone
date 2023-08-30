@@ -1,5 +1,6 @@
 package telefone;
 
+import exceptions.ResourceNotFoundException;
 import interfaces.AparelhoTelefonico;
 
 import java.util.HashSet;
@@ -24,29 +25,75 @@ public class Discador implements AparelhoTelefonico {
         this.contatos = contatos;
     }
 
-    @Override
-    public void atenderLigacao() {
+    public void adicionarContato(Contato contato) {
+        contatos.add(contato);
+        System.out.printf("O contato %s foi adicionado com sucesso!%n", contato.getNome());
+    }
 
+    public void removerContato(Contato contato) {
+        Contato contatoAserRemovido = null;
+        if (!contatos.isEmpty()) {
+            for (Contato obj : contatos) {
+                if (obj.equals(contato)) {
+                    contatoAserRemovido = obj;
+                    contatos.remove(contato);
+                    System.out.printf("O contato %s foi removido com sucesso!%n", contato.getNome());
+                    break;
+                }
+            }
+            if(contatoAserRemovido == null) {
+                System.out.printf("O contato %s não foi encontrado %n", contato.getNome());
+            }
+        } else {
+            throw new ResourceNotFoundException("A lista de contatos está vazia");
+        }
+    }
+
+    public void exibirContatos() {
+        System.out.println(contatos);
+    }
+
+    public void exibirQuantidadeContatos() {
+        System.out.println(contatos.size());
     }
 
     @Override
-    public void cancelarLigacao() {
-
+    public void atenderLigacao(Long numero) {
+        System.out.printf("Chamada com o número %d em andamento...%n", numero);
     }
 
     @Override
-    public void bloquearNumero(Integer numero) {
-
+    public void cancelarLigacao(Long numero) {
+        System.out.printf("Chamada com o número %d cancelada.%n", numero);
     }
 
     @Override
-    public void ligar(Integer numero) {
+    public void bloquearNumero(Long numero) {
+        Contato contatoAserBloqueado = null;
+        if (!contatos.isEmpty()) {
+            for (Contato contato : contatos) {
+                if (contato.getNumero().equals(numero) && !contato.isBloqueado()) {
+                    contatoAserBloqueado = contato;
+                    contato.setBloqueado(true);
+                    System.out.printf("O número %d foi bloqueado %n", numero);
+                }
+            }
+            if (contatoAserBloqueado == null) {
+                System.out.printf("O número %d não foi encontrado %n", numero);
+            }
+        } else {
+            throw new ResourceNotFoundException("A lista de contatos está vazia");
+        }
+    }
 
+    @Override
+    public void ligar(Long numero) {
+        System.out.printf("Ligando para o número %d %n", numero);
     }
 
     @Override
     public void iniciarCorreioDeVoz() {
-
+        System.out.println("Iniciando correio de voz");
     }
 
     @Override
